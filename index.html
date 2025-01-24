@@ -1,88 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kayoko MD || Home</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
-    body {
-      background-color: #0f172a;
-      font-family: 'Space Grotesk', sans-serif;
-      min-height: 100vh;
-    }
-    .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 1.5s infinite ease-in-out;
-    }
-    @keyframes twinkle {
-      0%, 100% {
-        opacity: 0.2;
-      }
-      50% {
-        opacity: 0.8;
-      }
-    }
-    .audio-player {
-      background: linear-gradient(45deg, #60A5FA, #A78BFA);
-      padding: 2rem;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-    }
-    .audio-player:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    }
-    audio {
-      width: 100%;
-      border-radius: 10px;
-      background-color: #fff;
-    }
-    .audio-player h3 {
-      color: white;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-  </style>
+    <title>Simple Audio Player</title>
 </head>
-<body class="text-gray-200">
-  <!-- Navbar -->
-  <nav class="navbar fixed top-0 left-0 right-0 z-50 px-6 py-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <p class="text-xl font-bold bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-500 bg-clip-text text-transparent">
-        Kayoko MD
-      </p>
-    </div>
-  </nav>
+<body>
+    <button onclick="playAudio()">Play Audio</button>
+    <audio id="audioPlayer" controls style="display:none;">
+        <source src="https://files.catbox.moe/7unwfl.opus" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-  <!-- Audio Player Section -->
-  <section class="py-12 px-6 bg-gray-900">
-    <div class="container mx-auto text-center">
-      <div class="audio-player">
-        <h3 class="text-xl font-semibold text-white">Play Your Favorite Audio</h3>
-        <audio controls>
-          <source src="https://files.catbox.moe/7unwfl.opus" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="mt-16 py-8 px-6 text-center border-t border-gray-800">
-    <p class="text-gray-400 text-sm">
-      &copy; 2024 — Kayoko Assistant Created By <b>LinooZy</b>
-    </p>
-  </footer>
-
+    <script>
+        function playAudio() {
+            var audio = document.getElementById('audioPlayer');
+            audio.style.display = 'block';
+            audio.play();
+        }
+    </script>
 </body>
 </html>
