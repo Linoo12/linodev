@@ -1,391 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kayoko MD || Home</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
-    body {
-      background-color: #0f172a;
-      font-family: 'Space Grotesk', sans-serif;
-      min-height: 100vh;
-    }
-    .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 1.5s infinite ease-in-out;
-    }
-    @keyframes twinkle {
-      0%, 100% {
-        opacity: 0.2;
-      }
-      50% {
-        opacity: 0.8;
-      }
-    }
-    .endpoint-card, .stats-card {
-      background: rgba(30, 41, 59, 0.8);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-    }
-    .endpoint-card:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      border-color: rgba(147, 197, 253, 0.5);
-    }
-    .stats-card:hover {
-      border-color: rgba(147, 197, 253, 0.3);
-    }
-    .method-badge {
-      font-size: 0.8rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 0.3rem;
-      font-weight: 600;
-    }
-    .method-free {
-      background: rgba(77,223,127,0.26);
-      color: rgb(77,223,127);
-    }
-    .method-premium {
-      background: rgba(251, 146, 60, 0.2);
-      color: #FB923C;
-    }
-    .navbar {
-      background: rgba(15,23,42,0.469);
-      backdrop-filter: blur(25px);
-    }
-    .mobile-menu {
-      transform: translateX(-100%);
-      transition: transform 0.3s ease-in-out;
-    }
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-    .hamburger {
-      cursor: pointer;
-      padding: 10px;
-    }
-    .hamburger-line {
-      display: block;
-      width: 24px;
-      height: 2px;
-      margin: 5px auto;
-      background-color: white;
-      transition: all 0.3s ease-in-out;
-    }
-    .hamburger.active .hamburger-line:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .hamburger.active .hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active .hamburger-line:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-    .stat-value {
-      background: linear-gradient(45deg, #60A5FA, #A78BFA);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .logo-container {
-      animation: float 6s ease-in-out infinite;
-      width: 128px;
-      height: 128px;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-    .logo-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 50%;
-    }
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-    @media (max-width: 768px) {
-      .endpoint-card {
-        margin: 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="src/style.css">
+    <title>Music Player</title>
 </head>
-<body class="text-gray-200">
-  <div id="stars"></div>
 
-  <!-- Navbar -->
-  <nav class="navbar fixed top-0 left-0 right-0 z-50 px-6 py-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <p class="text-xl font-bold bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-500 bg-clip-text text-transparent">
-        Kayoko MD
-      </p>
-
-      <!-- Hamburger Menu -->
-      <div class="hamburger lg:hidden" id="hamburger">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </div>
-
-      <!-- Desktop Menu -->
-      <div class="hidden lg:flex space-x-8">
-        <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
-        <a href="#pricing" class="hover:text-blue-400 transition-colors">Pricing</a>
-        <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-gray-900 z-40 p-6 lg:hidden">
-    <div class="flex flex-col space-y-6 mt-16">
-      <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
-      <a href="#pricing" class="hover:text-blue-400 transition-colors">Pricing</a>
-      <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-    </div>
-  </div>
-
-  <!-- Header with Logo -->
-  <header class="py-24 px-6 text-center animate__animated animate__fadeIn">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
-      <!-- Logo/Image Container -->
-      <div class="logo-container relative">
-        <div class="w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-purple-600 opacity-20 absolute animate-pulse"></div>
-        <div class="w-full h-full rounded-full bg-yellow-to-br from-orange-400 to-pink-500 opacity-30 absolute" style="transform: scale(0.9)"></div>
-        <img src="https://files.catbox.moe/wq9bzr.jpg" alt="Kayoko MD" class="relative z-10" />
-      </div>
-
-      <!-- Title and Description -->
-      <div class="text-center md:text-left">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">
-          Kayoko MD - WhatsApp Bot
-        </h1>
-
-        <p class="mt-4 text-gray-400">
-          Discover the power of automation with Kayoko MD WhatsApp Bot. Manage your business and personal communications effortlessly.
-        </p>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Features Section -->
-  <section id="features" class="py-12 px-6 bg-gray-900">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white">Features</h2>
-      <p class="text-gray-400 mt-4">Explore the features that make Kayoko MD WhatsApp Bot a must-have tool for your communication needs.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        <div class="bg-gray-800 p-6 rounded-lg">
-          <i class="fas fa-user-friends text-blue-500 text-4xl"></i>
-          <h3 class="text-xl font-semibold text-white mt-4">User Management</h3>
-          <p class="text-gray-400 mt-2">Effortlessly manage users with our intuitive interface.</p>
+<body>
+    <div id="particles-js"></div>
+    <div class="wrapper">
+        <div class="top-bar">
+            <span>Now Playing</span>
         </div>
-        <div class="bg-gray-800 p-6 rounded-lg">
-          <i class="fas fa-cogs text-green-500 text-4xl"></i>
-          <h3 class="text-xl font-semibold text-white mt-4">Automated Responses</h3>
-          <p class="text-gray-400 mt-2">Save time with smart, automated replies to common queries.</p>
+        <div class="img-area">
+            <img src="" alt="">
         </div>
-        <div class="bg-gray-800 p-6 rounded-lg">
-          <i class="fas fa-chart-line text-purple-500 text-4xl"></i>
-          <h3 class="text-xl font-semibold text-white mt-4">Analytics</h3>
-          <p class="text-gray-400 mt-2">Track your bot's performance and gain insights with detailed analytics.</p>
+        <div class="song-details">
+            <p class="name"></p>
+            <p class="artist"></p>
         </div>
-      </div>
+        <div class="progress-area">
+            <div class="progress-bar">
+                <audio id="main-audio" src=""></audio>
+            </div>
+            <div class="song-timer">
+                <span class="current-time">0:00</span>
+                <span class="max-duration">0:00</span>
+            </div>
+        </div>
+        <div class="controls">
+            <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
+            <i id="prev" class="material-icons">skip_previous</i>
+            <div class="play-pause">
+                <i class="material-icons play">play_arrow</i>
+            </div>
+            <i id="next" class="material-icons">skip_next</i>
+            <i id="more-music" class="material-icons">queue_music</i>
+        </div>
+        <div class="music-list">
+            <div class="header">
+                <div class="row">
+                    <i class="list material-icons">queue_music</i>
+                    <span>Music list</span>
+                </div>
+                <i id="close" class="material-icons">close</i>
+            </div>
+            <ul>
+                <!-- here li list are coming from js -->
+            </ul>
+        </div>
     </div>
-  </section>
 
-<!-- Pricing Section -->
-<section id="pricing" class="py-12 px-6 bg-gray-900">
-  <div class="container mx-auto text-center">
-    <h2 class="text-3xl font-bold text-white">Pricing</h2>
-    <p class="text-gray-400 mt-4">Pilih paket yang sesuai dengan kebutuhan Anda.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-      <!-- Bot Gratis -->
-      <div class="endpoint-card rounded-xl p-6">
-        <span class="method-badge method-free">Sewa Bot</span>
-        <h3 class="text-xl font-semibold text-white mt-4">Rp 7.000</h3>
-        <p class="text-gray-400 mt-2">1 week</p>
-        <p class="text-gray-400">akses fitur premium tanpa limit</p>
-        <a href="https://wa.me/6285769668470?text=Kak sewa paket 1week" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded">Pesan Sekarang</a>
-      </div>
-      <!-- Sewa Bot -->
-      <div class="endpoint-card rounded-xl p-6">
-        <span class="method-badge method-premium">Sewa Bot</span>
-        <h3 class="text-xl font-semibold text-white mt-4">Rp 20.000</h3>
-        <p class="text-gray-400 mt-2">1 month</p>
-        <p class="text-gray-400">akses fitur premium tanpa limit</p>
-        <a href="https://wa.me/6285769668470?text=Kak sewa paket 1bulan" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded">Pesan Sekarang</a>
-      </div>
-      <!-- Sewa Bot -->
-      <div class="endpoint-card rounded-xl p-6">
-        <span class="method-badge method-premium">Sewa Bot</span>
-        <h3 class="text-xl font-semibold text-white mt-4">Rp 40.000</h3>
-        <p class="text-gray-400 mt-2">2 month</p>
-        <p class="text-gray-400">akses fitur premium tanpa limit</p>
-        <a href="https://wa.me/6285769668470?text=Kak sewa paket 1bulan" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded">Pesan Sekarang</a>
-      </div>
-      <!-- Premium Bot -->
-      <div class="endpoint-card rounded-xl p-6">
-        <span class="method-badge method-premium">Premium Bot</span>
-        <h3 class="text-xl font-semibold text-white mt-4">Rp 10.000</h3>
-        <p class="text-gray-400 mt-2">1 month</p>
-        <p class="text-gray-400">akses semua fitur tanpa limit</p>
-        <a href="https://wa.me/6285769668470?text=Kak mau premium bot 1month" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded">Pesan Sekarang</a>
-      </div>
-    </div>
-  </div>
-</section>
-  
-  <!-- Review Section -->
-<section id="review" class="py-12 px-6 bg-gray-900">
-  <div class="container mx-auto text-center">
-    <h2 class="text-3xl font-bold text-white">Review</h2>
-    <p class="text-gray-400 mt-4">Lihat apa yang dikatakan pengguna tentang bot WhatsApp kami:</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-      <!-- Review 1 -->
-      <div class="bg-gray-800 p-6 rounded-lg">
-        <img src="https://files.catbox.moe/ea3cfj.jpg" alt="Reviewer 1" class="w-16 h-16 rounded-full mx-auto">
-        <h3 class="text-xl font-semibold text-white mt-4">Kayoko-Chan</h3>
-        <p class="text-gray-400 mt-2">"Bot WhatsApp ini sangat membantu dalam mengelola pesan saya secara otomatis."</p>
-      </div>
-      <!-- Review 2 -->
-      <div class="bg-gray-800 p-6 rounded-lg">
-        <img src="https://files.catbox.moe/1vv2iu.jpg" alt="Reviewer 2" class="w-16 h-16 rounded-full mx-auto">
-        <h3 class="text-xl font-semibold text-white mt-4">LinoZy</h3>
-        <p class="text-gray-400 mt-2">"Respon cepat dan fitur yang lengkap membuat saya sangat puas."</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <script src="src/music.js"></script>
+    <script src="src/index.js"></script>
+    <script src="src/particles.js"></script>
+</body>
 
-<!-- Contact Section -->
-<section id="contact" class="py-12 px-6 bg-gray-900">
-  <div class="container mx-auto text-center">
-    <h2 class="text-3xl font-bold text-white">Contact</h2>
-    <p class="text-gray-400 mt-4">Hubungi kami melalui salah satu saluran berikut:</p>
-    <div class="mt-8 space-y-4">
-      <!-- Nomor Bot WhatsApp -->
-      <div>
-        <h3 class="text-lg font-semibold text-white">Nomor Bot WhatsApp</h3>
-        <p class="text-gray-400 flex items-center justify-center">
-          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
-          <a href="https://wa.me/6285769668470" class="text-blue-400 hover:text-blue-600">Klik untuk chat bot</a>
-        </p>
-      </div>
-      <!-- Grup WhatsApp -->
-      <div>
-        <h3 class="text-lg font-semibold text-white">Gabung ke Grup WhatsApp</h3>
-        <p class="text-gray-400 flex items-center justify-center">
-          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
-          <a href="https://chat.whatsapp.com/FAotNmeUw8bAh33pEwipBz" class="text-blue-400 hover:text-blue-600">Klik di sini untuk bergabung Group Bot</a>
-        </p>
-      </div>
-      <!-- Saluran WhatsApp Bot -->
-      <div>
-        <h3 class="text-lg font-semibold text-white">Saluran WhatsApp Bot</h3>
-        <p class="text-gray-400 flex items-center justify-center">
-          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
-          <a href="https://whatsapp.com/channel/0029Vak7RGtHwXbHCOZNmL0w" class="text-blue-400 hover:text-blue-600">Klik untuk akses saluran seputar bot wa</a>
-        </p>
-      </div>
-      <!-- Nomor Owner WhatsApp -->
-      <div>
-        <h3 class="text-lg font-semibold text-white">Nomor WhatsApp Owner</h3>
-        <p class="text-gray-400 flex items-center justify-center">
-          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
-          <a href="https://wa.me/6285769668470" class="text-blue-400 hover:text-blue-600">Klik untuk chat owner</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Notifikasi di Pojok Kanan Atas -->
-<!-- Notifikasi di Pojok Kanan Atas -->
-<div id="notification" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-lg cursor-pointer animate-pulse z-50 hidden">
-  <span>🌟 Donasi sekarang untuk mendukung kami! 🌟</span>
-</div>
-
-<!-- Modal Donasi -->
-<div id="donationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-lg w-80 p-6 text-center">
-    <h2 class="text-xl font-bold mb-4">Dukung Kami dengan Donasi</h2>
-    <p class="mb-6">Scan QRIS untuk mendukung pengembangan lebih lanjut.</p>
-    <img src="https://files.catbox.moe/ldk521.jpg" alt="QRIS" class="mx-auto w-40 h-40 mb-6">
-    <a href="https://files.catbox.moe/ldk521.jpg" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-      Donasi Sekarang
-    </a>
-    <button id="closeModal" class="mt-4 text-gray-500 hover:text-gray-800">Tutup</button>
-  </div>
-</div>
-
-<!-- Audio -->
-<audio id="notificationAudio">
-  <source src="https://files.catbox.moe/owjl4m.opus" type="audio/mp3">
-  Browser Anda tidak mendukung elemen audio.
-</audio>
-
-<!-- Footer -->
-<footer class="mt-16 py-8 px-6 text-center border-t border-gray-800">
-  <p class="text-gray-400 text-sm">
-    &copy; 2024 — Kayoko Assistant Created By <b>LinooZy</b>
-  </p>
-</footer>
-
-<script>
-  // Elemen yang digunakan
-  const notification = document.getElementById('notification');
-  const notificationAudio = document.getElementById('notificationAudio');
-  const donationModal = document.getElementById('donationModal');
-  const closeModal = document.getElementById('closeModal');
-
-  // Tampilkan notifikasi saat halaman dimuat
-  window.addEventListener('load', () => {
-    notification.classList.remove('hidden');
-    notificationAudio.play().catch(err => console.error('Audio autoplay blocked:', err));
-  });
-
-  // Klik notifikasi untuk menampilkan modal
-  notification.addEventListener('click', () => {
-    notification.classList.add('hidden'); // Sembunyikan notifikasi
-    donationModal.classList.remove('hidden'); // Tampilkan modal donasi
-  });
-
-  // Tutup modal saat tombol "Tutup" diklik
-  closeModal.addEventListener('click', () => {
-    donationModal.classList.add('hidden');
-  });
-</script>
-
-<style>
-  /* Animasi notifikasi */
-  #notification.animate-pulse {
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-  }
-
-  /* Modal styling */
-  #donationModal {
-    backdrop-filter: blur(10px);
-  }
-</style>
+</html>
