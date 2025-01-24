@@ -1,10 +1,49 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Simple Audio Player</title>
+    <style>
+        .btn-play {
+            background-color: #1a202c; /* Same background as mobile menu */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn-play:hover {
+            background-color: #2d3748; /* Hover color */
+        }
+    </style>
 </head>
 <body>
-    <button onclick="playAudio()">Play Audio</button>
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex space-x-8">
+        <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
+        <a href="#pricing" class="hover:text-blue-400 transition-colors">Pricing</a>
+        <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+        <button class="btn-play" onclick="playAudio()">Play Audio</button>
+    </div>
+    </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-gray-900 z-40 p-6 lg:hidden">
+        <div class="flex flex-col space-y-6 mt-16">
+            <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
+            <a href="#pricing" class="hover:text-blue-400 transition-colors">Pricing</a>
+            <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            <button class="btn-play" onclick="playAudio()">Play Audio</button>
+        </div>
+    </div>
+
     <audio id="audioPlayer" controls style="display:none;">
         <source src="https://files.catbox.moe/7unwfl.opus" type="audio/mpeg">
         Your browser does not support the audio element.
