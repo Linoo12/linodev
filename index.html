@@ -262,27 +262,29 @@
   </div>
 </section>
 
-<!-- Audio Section -->
-<section id="audio" class="py-12 px-6 bg-gray-900">
-  <div class="container mx-auto text-center">
-    <h2 class="text-3xl font-bold text-white">Music</h2>
-    <p class="text-gray-400 mt-4">dengarkan music tersebut</p>
-    <div class="mt-8">
-      <img src="https://files.catbox.moe/1wos9q.jpg" alt="Thumbnail" class="w-48 h-48 mx-auto rounded-lg">
-      <div class="mt-4">
-        <button id="playAudio" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
-          Play Music
-        </button>
-      </div>
+<!-- Notifikasi di Pojok Kanan Atas -->
+  <div id="notification" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-lg cursor-pointer animate-pulse z-50">
+    <span>🌟 Donasi sekarang untuk mendukung kami! 🌟</span>
+  </div>
+
+  <!-- Modal Donasi -->
+  <div id="donationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg w-80 p-6 text-center">
+      <h2 class="text-xl font-bold mb-4">Dukung Kami dengan Donasi</h2>
+      <p class="mb-6 font-bold">Scan QRIS untuk mendukung pengembangan lebih lanjut.</p>
+      <img src="https://files.catbox.moe/ldk521.jpg" alt="QRIS" class="mx-auto w-40 h-40 mb-6">
+      <a href="https://files.catbox.moe/ldk521.jpg" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Donasi Sekarang
+      </a>
+      <button id="closeModal" class="mt-4 text-gray-500 hover:text-gray-800">Tutup</button>
     </div>
   </div>
-</section>
 
-<!-- Audio Element -->
-<audio id="audioPlayer">
-  <source src="https://files.catbox.moe/7unwfl.opus" type="audio/mp3">
-  Browser Anda tidak mendukung elemen audio.
-</audio>
+  <!-- Audio -->
+  <audio id="notificationAudio">
+    <source src="https://files.catbox.moe/owjl4m.opus" type="audio/mp3">
+    Browser Anda tidak mendukung elemen audio.
+  </audio>
   </div>
     </div>
   </div>
@@ -435,34 +437,27 @@
     });
   </script>
   
-  <script>
+   <script>
+    // Elemen yang digunakan
     const notification = document.getElementById('notification');
+    const notificationAudio = document.getElementById('notificationAudio');
     const donationModal = document.getElementById('donationModal');
     const closeModal = document.getElementById('closeModal');
-    const notificationAudio = document.getElementById('notificationAudio');
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // Fungsi untuk menampilkan notifikasi kembali ketika halaman dimuat ulang
+    // Tampilkan notifikasi saat halaman dimuat
     window.addEventListener('load', () => {
       notification.classList.remove('hidden');
     });
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-
+    // Klik notifikasi untuk menampilkan modal dan memutar ulang audio
     notification.addEventListener('click', () => {
-      notification.classList.add('hidden');
-      donationModal.classList.remove('hidden');
-      notificationAudio.play();
+      notificationAudio.currentTime = 0; // Reset waktu pemutaran audio ke awal
+      notificationAudio.play(); // Mainkan audio
+      notification.classList.add('hidden'); // Sembunyikan notifikasi
+      donationModal.classList.remove('hidden'); // Tampilkan modal don⁽¹⁾⁽²⁾⁽³⁾
     });
-
-    closeModal.addEventListener('click', () => {
-      donationModal.classList.add('hidden');
-    });
-  </⁽¹⁾⁽²⁾⁽³⁾
   </script>
 
 <style>
