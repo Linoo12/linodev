@@ -145,7 +145,6 @@
         <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
         <a href="#pricing" class="hover:text-blue-400 transition-colors">Pricing</a>
         <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-        <a href="#music" class="hover:text-blue-400 transition-colors">Music</a>
       </div>
     </div>
   </nav>
@@ -155,20 +154,6 @@
     <a href="#features" class="block px-4 py-2 hover:bg-gray-700">Features</a>
     <a href="#pricing" class="block px-4 py-2 hover:bg-gray-700">Pricing</a>
     <a href="#contact" class="block px-4 py-2 hover:bg-gray-700">Contact</a>
-    <a href="#music" class="block px-4 py-2 hover:bg-gray-700">Music</a>
-  </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu fixed top-0 left-0 h-full w-64 bg-gray-900 z-40 p-6 lg:hidden">
-    <div class="flex flex-col space-y-6 mt-16">
-      <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
-      <a href="#pricing" class="hover:text-blue-400 transition-colors">Pricing</a>
-      <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-      <a href="#music" class="hover:text-blue-400 transition-colors">Music</a>
-    </div>
   </div>
 
   <!-- Header with Logo -->
@@ -397,12 +382,10 @@
 </script>
 
 <script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
+    // JavaScript untuk mengaktifkan menu hamburger
+    document.getElementById('hamburger').addEventListener('click', function () {
+      this.classList.toggle('active');
+      document.getElementById('mobile-menu').classList.toggle('active');
     });
   </script>
 
