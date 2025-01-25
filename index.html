@@ -352,7 +352,7 @@
   </div>
 </section>
 
-<!-- Notifikasi di Pojok Kanan Atas -->
+ <!-- Notifikasi di Pojok Kanan Atas -->
   <div id="notification" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-lg cursor-pointer animate-pulse z-50">
     <span>🌟 Donasi sekarang untuk mendukung kami! 🌟</span>
   </div>
@@ -440,10 +440,17 @@
     const donationModal = document.getElementById('donationModal');
     const closeModal = document.getElementById('closeModal');
     const notificationAudio = document.getElementById('notificationAudio');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
 
     // Fungsi untuk menampilkan notifikasi kembali ketika halaman dimuat ulang
     window.addEventListener('load', () => {
       notification.classList.remove('hidden');
+    });
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
     });
 
     notification.addEventListener('click', () => {
@@ -453,8 +460,9 @@
     });
 
     closeModal.addEventListener('click', () => {
-      donationModal.classList.add('⁽¹⁾⁽²⁾
+      donationModal.classList.add('hidden');
     });
+  </⁽¹⁾⁽²⁾⁽³⁾
   </script>
 
 <style>
