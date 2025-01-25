@@ -326,7 +326,7 @@
   </div>
 </section>
 
- <!-- Notifikasi di Pojok Kanan Atas -->
+<!-- Notifikasi di Pojok Kanan Atas -->
   <div id="notification" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-lg cursor-pointer animate-pulse z-50">
     <span>🌟 Donasi sekarang untuk mendukung kami! 🌟</span>
   </div>
@@ -334,7 +334,7 @@
   <!-- Modal Donasi -->
   <div id="donationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white rounded-lg w-80 p-6 text-center">
-      <h2 class="text-xl font-bold mb-4">Dukung Kami dengan Donasi</h2>
+      <h2 class="text-xl font-bold mb-4">**Dukung Kami dengan Donasi**</h2>
       <p class="mb-6 font-bold">Scan QRIS untuk mendukung pengembangan lebih lanjut.</p>
       <img src="https://files.catbox.moe/ldk521.jpg" alt="QRIS" class="mx-auto w-40 h-40 mb-6">
       <a href="https://files.catbox.moe/ldk521.jpg" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
@@ -378,6 +378,7 @@
       notificationAudio.play(); // Mainkan audio
       notification.classList.add('hidden'); // Sembunyikan notifikasi
       donationModal.classList.remove('hidden'); // Tampilkan modal donasi
+      // Tutup modal saat tombol "Tutup"⁽¹⁾⁽²⁾  
     });
   </script>
 
