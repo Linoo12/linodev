@@ -384,27 +384,29 @@
 </footer>
 
 <script>
-    const notification = document.getElementById('notification');
-    const donationModal = document.getElementById('donationModal');
-    const closeModal = document.getElementById('closeModal');
-    const notificationAudio = document.getElementById('notificationAudio');
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+  // Elemen yang digunakan
+  const notification = document.getElementById('notification');
+  const notificationAudio = document.getElementById('notificationAudio');
+  const donationModal = document.getElementById('donationModal');
+  const closeModal = document.getElementById('closeModal');
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
+  // Tampilkan notifikasi saat halaman dimuat
+  window.addEventListener('load', () => {
+    notification.classList.remove('hidden');
+    notificationAudio.play().catch(err => console.error('Audio autoplay blocked:', err));
+  });
 
-    notification.addEventListener('click', () => {
-      donationModal.classList.remove('hidden');
-      notificationAudio.play();
-    });
+  // Klik notifikasi untuk menampilkan modal
+  notification.addEventListener('click', () => {
+    notification.classList.add('hidden'); // Sembunyikan notifikasi
+    donationModal.classList.remove('hidden'); // Tampilkan modal donasi
+  });
 
-    closeModal.addEventListener('click', () => {
-      donationModal.classList.add('hidden');
-    });
-  </script>
+  // Tutup modal saat tombol "Tutup" diklik
+  closeModal.addEventListener('click', () => {
+    donationModal.classList.add('hidden');
+  });
+</script>
 
 <script>
   // Elemen audio
@@ -422,6 +424,40 @@
     }
   });
 </script>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+  </script>
+  
+  <script>
+    const notification = document.getElementById('notification');
+    const donationModal = document.getElementById('donationModal');
+    const closeModal = document.getElementById('closeModal');
+    const notificationAudio = document.getElementById('notificationAudio');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    notification.addEventListener('click', () => {
+      notification.classList.add('hidden');
+      donationModal.classList.remove('hidden');
+      notificationAudio.play();
+    });
+
+    closeModal.addEventListener('click', () => {
+      donationModal.classList.add('hidden');
+    });
+  </script>
 
 <style>
   /* Animasi notifikasi */
