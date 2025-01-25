@@ -353,29 +353,28 @@
 </section>
 
 <!-- Notifikasi di Pojok Kanan Atas -->
-<!-- Notifikasi di Pojok Kanan Atas -->
-<div id="notification" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-lg cursor-pointer animate-pulse z-50 hidden">
-  <span>🌟 Donasi sekarang untuk mendukung kami! 🌟</span>
-</div>
-
-<!-- Modal Donasi -->
-<div id="donationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-lg w-80 p-6 text-center">
-    <h2 class="text-xl font-bold mb-4">Dukung Kami dengan Donasi</h2>
-    <p class="mb-6">Scan QRIS untuk mendukung pengembangan lebih lanjut.</p>
-    <img src="https://files.catbox.moe/ldk521.jpg" alt="QRIS" class="mx-auto w-40 h-40 mb-6">
-    <a href="https://files.catbox.moe/ldk521.jpg" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-      Donasi Sekarang
-    </a>
-    <button id="closeModal" class="mt-4 text-gray-500 hover:text-gray-800">Tutup</button>
+  <div id="notification" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-lg cursor-pointer animate-pulse z-50">
+    <span>🌟 Donasi sekarang untuk mendukung kami! 🌟</span>
   </div>
-</div>
 
-<!-- Audio -->
-<audio id="notificationAudio">
-  <source src="https://files.catbox.moe/owjl4m.opus" type="audio/mp3">
-  Browser Anda tidak mendukung elemen audio.
-</audio>
+  <!-- Modal Donasi -->
+  <div id="donationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg w-80 p-6 text-center">
+      <h2 class="text-xl font-bold mb-4">Dukung Kami dengan Donasi</h2>
+      <p class="mb-6">Scan QRIS untuk mendukung pengembangan lebih lanjut.</p>
+      <img src="https://files.catbox.moe/ldk521.jpg" alt="QRIS" class="mx-auto w-40 h-40 mb-6">
+      <a href="https://files.catbox.moe/ldk521.jpg" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Donasi Sekarang
+      </a>
+      <button id="closeModal" class="mt-4 text-gray-500 hover:text-gray-800">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="notificationAudio">
+    <source src="https://files.catbox.moe/owjl4m.opus" type="audio/mp3">
+    Browser Anda tidak mendukung elemen audio.
+  </audio>
 
 <!-- Footer -->
 <footer class="mt-16 py-8 px-6 text-center border-t border-gray-800">
@@ -385,29 +384,27 @@
 </footer>
 
 <script>
-  // Elemen yang digunakan
-  const notification = document.getElementById('notification');
-  const notificationAudio = document.getElementById('notificationAudio');
-  const donationModal = document.getElementById('donationModal');
-  const closeModal = document.getElementById('closeModal');
+    const notification = document.getElementById('notification');
+    const donationModal = document.getElementById('donationModal');
+    const closeModal = document.getElementById('closeModal');
+    const notificationAudio = document.getElementById('notificationAudio');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-  // Tampilkan notifikasi saat halaman dimuat
-  window.addEventListener('load', () => {
-    notification.classList.remove('hidden');
-    notificationAudio.play().catch(err => console.error('Audio autoplay blocked:', err));
-  });
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
 
-  // Klik notifikasi untuk menampilkan modal
-  notification.addEventListener('click', () => {
-    notification.classList.add('hidden'); // Sembunyikan notifikasi
-    donationModal.classList.remove('hidden'); // Tampilkan modal donasi
-  });
+    notification.addEventListener('click', () => {
+      donationModal.classList.remove('hidden');
+      notificationAudio.play();
+    });
 
-  // Tutup modal saat tombol "Tutup" diklik
-  closeModal.addEventListener('click', () => {
-    donationModal.classList.add('hidden');
-  });
-</script>
+    closeModal.addEventListener('click', () => {
+      donationModal.classList.add('hidden');
+    });
+  </script>
 
 <script>
   // Elemen audio
@@ -425,16 +422,6 @@
     }
   });
 </script>
-
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-  </script>
 
 <style>
   /* Animasi notifikasi */
