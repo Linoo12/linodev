@@ -326,7 +326,7 @@
   </div>
 </section>
 
-<!-- Notifikasi di Pojok Kanan Atas -->
+ <!-- Notifikasi di Pojok Kanan Atas -->
   <div id="notification" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-lg cursor-pointer animate-pulse z-50">
     <span>🌟 Donasi sekarang untuk mendukung kami! 🌟</span>
   </div>
@@ -369,6 +369,7 @@
     // Tampilkan notifikasi saat halaman dimuat
     window.addEventListener('load', () => {
       notification.classList.remove('hidden');
+      notificationAudio.play().catch(err => console.error('Audio autoplay blocked:', err));
     });
 
     // Klik notifikasi untuk menampilkan modal dan memutar ulang audio
