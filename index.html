@@ -358,58 +358,6 @@
 </footer>
 
 <script>
-  // Elemen yang digunakan
-  const notification = document.getElementById('notification');
-  const notificationAudio = document.getElementById('notificationAudio');
-  const donationModal = document.getElementById('donationModal');
-  const closeModal = document.getElementById('closeModal');
-
-  // Tampilkan notifikasi saat halaman dimuat
-  window.addEventListener('load', () => {
-    notification.classList.remove('hidden');
-    notificationAudio.play().catch(err => console.error('Audio autoplay blocked:', err));
-  });
-
-  // Klik notifikasi untuk menampilkan modal
-  notification.addEventListener('click', () => {
-    notification.classList.add('hidden'); // Sembunyikan notifikasi
-    donationModal.classList.remove('hidden'); // Tampilkan modal donasi
-  });
-
-  // Tutup modal saat tombol "Tutup" diklik
-  closeModal.addEventListener('click', () => {
-    donationModal.classList.add('hidden');
-  });
-</script>
-
-<script>
-  // Elemen audio
-  const audioPlayer = document.getElementById('audioPlayer');
-  const playAudioButton = document.getElementById('playAudio');
-
-  // Event listener untuk tombol play audio
-  playAudioButton.addEventListener('click', () => {
-    if (audioPlayer.paused) {
-      audioPlayer.play();
-      playAudioButton.textContent = 'Pause Audio';
-    } else {
-      audioPlayer.pause();
-      playAudioButton.textContent = 'Play Audio';
-    }
-  });
-</script>
-
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-  </script>
- 
- <script>
     // Elemen yang digunakan
     const notification = document.getElementById('notification');
     const notificationAudio = document.getElementById('notificationAudio');
@@ -429,6 +377,16 @@
       notificationAudio.play(); // Mainkan audio
       notification.classList.add('hidden'); // Sembunyikan notifikasi
       donationModal.classList.remove('hidden'); // Tampilkan modal donasi
+    });
+  </script>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
     });
   </script>
 
