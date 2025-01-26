@@ -147,7 +147,11 @@
   </style>
 </head
 </head>
-<body class="text-gray-200">
+<<!-- Teks dengan efek pengetikan -->
+    <div class="typing"></div>
+
+    <!-- Bintang sebagai background -->
+    <div id="stars" class="stars"></div>
   <div id="stars"></div>
 
   <!-- Navbar -->
@@ -359,14 +363,87 @@
     Browser Anda tidak mendukung elemen audio.
   </audio>
 
-<!-- Footer -->
-<footer class="mt-16 py-8 px-6 text-center border-t border-gray-800">
-  <p class="text-gray-400 text-sm">
-    &copy; 2025 — Kayoko Assistant Created By <b>LinooZy</b>
-  </p>
-</footer>
+ <!-- Footer -->
+    <footer class="mt-16 py-8 px-6 text-center border-t border-gray-800">
+        <p class="text-gray-400 text-sm">
+            &copy; 2025 — Kayoko Assistant Created By <b>LinooZy</b>
+        </p>
+    </footer>
 
-<script>
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+    <script>
+        var typing = new Typed(".typing", {
+            strings: ["Welcome To Kayoko MD", "Powered By XcodeLino", "Hi Everyone👋"],
+            typeSpeed: 100,
+            backSpeed: 50,
+            loop: true
+        });
+    </script>
+    
+    <script>
+        // Create stars background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 100;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Initialize stars
+        createStars();
+
+        // Notification and modal functionality
+        const notification = document.getElementById('notification');
+        const notificationAudio = document.getElementById('notificationAudio');
+        const donationModal = document.getElementById('donationModal');
+        const closeModal = document.getElementById('closeModal');
+
+        window.addEventListener('load', () => {
+            notification.classList.remove('hidden');
+            notificationAudio.play().catch(err => console.error('Audio autoplay blocked:', err));
+        });
+
+        notification.addEventListener('click', () => {
+        notificationAudio.currentTime = 0; // Reset waktu pemutaran audio ke awal
+            notificationAudio.play(); // Mainkan audio
+            notification.classList.add('hidden'); // Sembunyikan notifikasi
+            donationModal.classList.remove('hidden'); // Tampilkan modal donasi
+        });
+
+        closeModal.addEventListener('click', function () {
+            donationModal.classList.add('hidden'); // Menambahkan kelas 'hidden' untuk menyembunyikan modal
+        });
+
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+    
+  <script>
     // Elemen yang digunakan
     const notification = document.getElementById('notification');
     const notificationAudio = document.getElementById('notificationAudio');
@@ -435,56 +512,3 @@
     backdrop-filter: blur(10px);
   }
 </style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
-<script>
-  var typing = new Typed(".typing", {
-    strings: ["Welcome To Kayoko MD", "Powered By XcodeLino", "Hi Everyone👋"],
-    typeSpeed: 100,
-    backSpeed: 50,
-    loop: true
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-  // Create stars background
-  function createStars() {
-    const starsContainer = document.getElementById('stars');
-    const numberOfStars = 100;
-
-    for (let i = 0; i < numberOfStars; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      const size = Math.random() * 2 + 1;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.animationDelay = `${Math.random() * 2}s`;
-      starsContainer.appendChild(star);
-    }
-  }
-
-  // Initialize stars
-  createStars();
-
-  // Mobile menu functionality
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.querySelector('.mobile-menu');
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-  });
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-    }
-  });
-</script>
-</body>
-</html>
